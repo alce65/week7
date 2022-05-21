@@ -1,4 +1,10 @@
+import { createHead, headerHtml, footerHtml } from './templates.js';
 export const main = () => {
+    document.querySelector('head').innerHTML = createHead();
+    const main = document.querySelector('body').innerHTML;
+
+    document.querySelector('body').innerHTML = headerHtml + main + footerHtml;
+
     let heading = document.querySelector('h1');
     const parrafos = document.querySelectorAll('p');
     const aParrafos = [...parrafos];
@@ -43,9 +49,22 @@ const handlerButtonClick = (ev, heading) => {
 const handlerSubmit = (ev) => {
     ev.preventDefault();
 
-    const inputs = ev.target.querySelectorAll('input');
-
-    console.log('Listo para enviar', inputs[0].value, inputs[1].value);
+    const inputs = ev.target.querySelectorAll('input, select');
+    let data = {};
+    inputs.forEach((item) => {
+        console.dir(item);
+        if (item.type === 'checkbox') {
+            data[item.name] = item.checked;
+        } else if (item.type === 'radio') {
+            if (item.checked) {
+                data[item.name] = item.value;
+            }
+        } else {
+            data[item.name] = item.value;
+        }
+    });
+    ev.target.reset();
+    console.log('Listo para enviar', data);
 };
 
 const handlerInput = (ev) => {

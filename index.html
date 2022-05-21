@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>JS en la Web</title>
-
-        <link rel="stylesheet" href="./css/style.css" />
-        <script>
-            console.log('Desde HTML');
-        </script>
-        <script src="./js/app.js" type="module"></script>
-    </head>
+    <head> </head>
     <body>
-        <header>
-            <h1>JS en la Web</h1>
-        </header>
         <main>
             <div>
                 <button data-number="0">Change</button>
@@ -48,16 +34,42 @@
         </main>
         <form id="form1">
             <p>
-                <input type="text" placeholder="Dime tu nombre" />
+                <input
+                    type="text"
+                    name="firstName"
+                    placeholder="Dime tu nombre"
+                    required
+                />
                 <output>Hola</output>
             </p>
-            <input type="text" placeholder="Dime tu apellido" />
+            <input
+                type="text"
+                name="lastName"
+                placeholder="Dime tu apellido"
+                minlength="3"
+            />
+            <p>
+                <input type="checkbox" name="isOk" id="isOk" required />
+                <label for="isOk">Estoy de acuerdo....</label>
+            </p>
+            <p>
+                <input type="radio" name="turno" id="tm" value="M" required />
+                <label for="tm">Mañana</label>
+                <input type="radio" name="turno" id="tt" value="T" />
+                <label for="tt">Tarde</label>
+            </p>
+            <p>
+                <label for="course">Curso</label>
+                <select name="course" id="course" required>
+                    <option value=""></option>
+                    <option>Angular</option>
+                    <option value="R">React</option>
+                </select>
+            </p>
             <p>
                 <button type="submit">Enviar</button>
             </p>
         </form>
-        <footer>
-            <address>ISDI Coders</address>
-        </footer>
+        <script src="./js/app.js" type="module"></script>
     </body>
 </html>
